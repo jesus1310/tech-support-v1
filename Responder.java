@@ -35,8 +35,6 @@ public class Responder
      */
     public String generateResponse()
     {
-        int num = rnd.nextInt(respuestas.size());
-        String respAleatoria = respuestas.get(num);
-        return respAleatoria;
+        return respuestas.get(rnd.nextInt(respuestas.size()));
     }
 }
