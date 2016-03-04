@@ -8,14 +8,14 @@
  * It contains a loop that repeatedly reads input and generates output
  * until the users wants to leave.
  * 
- * @author     Michael KÃ¶lling and David J. Barnes
+ * @author     Michael Kölling and David J. Barnes
  * @version    0.1 (2011.07.31)
  */
 public class SupportSystem
 {
     private InputReader reader;
     private Responder responder;
-    
+
     /**
      * Creates a technical support system.
      */
@@ -33,11 +33,11 @@ public class SupportSystem
     public void start()
     {
         boolean finished = false;
-
         printWelcome();
-
         while(!finished) {
             String input = reader.getInput();
+            input = input.toLowerCase();
+            input = input.replace(" ", "");
 
             if(input.startsWith("bye")) {
                 finished = true;
@@ -55,8 +55,7 @@ public class SupportSystem
      */
     private void printWelcome()
     {
-        System.out.println("Welcome to the DodgySoft Technical Support System.");
-        System.out.println();
+        System.out.println("Welcome to the DodgySoft Technical Support System.\n");
         System.out.println("Please tell us about your problem.");
         System.out.println("We will assist you with any problem you might have.");
         System.out.println("Please type 'bye' to exit our system.");
