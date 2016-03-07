@@ -32,7 +32,7 @@ public class Responder
         respuestas.add("respuesta aleatoria 4");
         respuestas.add("respuesta aleatoria 5");
     }
-    
+
     /**
      * Método para introducir en el hashmap las respuestas que se devolverán en función de la palabra introducida
      */
@@ -42,18 +42,16 @@ public class Responder
         mapaDeRespuestas.put("deporte","Soy una máquina, no hago deporte");
         mapaDeRespuestas.put("adios","Muchas gracias por consultarme, escribe bye para salir");
     }
-    
+
     /**
      * Generate a response.
      * @return   A string that should be displayed as the response
      */
     public String generateResponse(String palabraBuscada)
     {
-        String respuestaGenerada = respuestas.get(rnd.nextInt(respuestas.size()));
-        for (int i = 0; i<mapaDeRespuestas.size();i++){
-            if (mapaDeRespuestas.containsKey(palabraBuscada)){
-                respuestaGenerada = mapaDeRespuestas.get(palabraBuscada);
-            }
+        String respuestaGenerada = mapaDeRespuestas.get(palabraBuscada);
+        if (respuestaGenerada == null){
+            respuestaGenerada = respuestas.get(rnd.nextInt(respuestas.size()));
         }
         return respuestaGenerada;
     }
