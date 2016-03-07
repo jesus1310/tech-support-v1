@@ -34,6 +34,7 @@ public class SupportSystem
     {
         boolean finished = false;
         printWelcome();
+        responder.rellenarMapa();
         while(!finished) {
             String input = reader.getInput();
             input = input.toLowerCase();
@@ -43,7 +44,7 @@ public class SupportSystem
                 finished = true;
             }
             else {
-                String response = responder.generateResponse();
+                String response = responder.generateResponse(input);
                 System.out.println(response);
             }
         }

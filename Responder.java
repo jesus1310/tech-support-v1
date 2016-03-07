@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.HashMap;
 
 /**
  * The responder class represents a response generator object.
@@ -12,6 +13,8 @@ public class Responder
 {
     // ArrayList de respuestas
     private ArrayList<String> respuestas;
+    // HashMap
+    private HashMap<String,String> mapaDeRespuestas;
     // Random para el arrayList de respuestas
     private Random rnd;
 
@@ -22,19 +25,36 @@ public class Responder
     {
         rnd = new Random(System.currentTimeMillis());
         respuestas = new ArrayList<String>();
-        respuestas.add("respuesta 1");
-        respuestas.add("respuesta 2");
-        respuestas.add("respuesta 3");
-        respuestas.add("respuesta 4");
-        respuestas.add("respuesta 5");
+        mapaDeRespuestas = new HashMap<String,String>();
+        respuestas.add("respuesta aleatoria 1");
+        respuestas.add("respuesta aleatoria 2");
+        respuestas.add("respuesta aleatoria 3");
+        respuestas.add("respuesta aleatoria 4");
+        respuestas.add("respuesta aleatoria 5");
+    }
+    
+    /**
+     * Método para introducir en el hashmap las respuestas que se devolverán en función de la palabra introducida
+     */
+    public void rellenarMapa(){
+        mapaDeRespuestas.put("hola","Ey, qué tal? Cuánto tiempo sin verte por aquí");
+        mapaDeRespuestas.put("diccionario","Sí, más o menos los HashMap funcionan como un diccionario");
+        mapaDeRespuestas.put("deporte","Soy una máquina, no hago deporte");
+        mapaDeRespuestas.put("adios","Muchas gracias por consultarme, escribe bye para salir");
     }
     
     /**
      * Generate a response.
      * @return   A string that should be displayed as the response
      */
-    public String generateResponse()
+    public String generateResponse(String palabraBuscada)
     {
-        return respuestas.get(rnd.nextInt(respuestas.size()));
+        String respuestaGenerada = respuestas.get(rnd.nextInt(respuestas.size()));
+        for (int i = 0; i<mapaDeRespuestas.size();i++){
+            if (mapaDeRespuestas.containsKey(palabraBuscada)){
+                respuestaGenerada = mapaDeRespuestas.get(palabraBuscada);
+            }
+        }
+        return respuestaGenerada;
     }
 }
